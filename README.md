@@ -431,7 +431,7 @@ The `data-paths` config has been renamed to `seed-paths`. Please update your
 ```
 
 
-### After DBT modeelling
+### After building DBT Model
 Screenshot:
 
 ![img_model.png](img/img_model.png)
