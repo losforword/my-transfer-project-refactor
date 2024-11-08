@@ -4,16 +4,17 @@
 #table_config="table_config.yml"
 table_config=$1
 env=$2
+failed_result=0
 
 echo "Current working directory of the shell script dbt_command_loop.sh: " "$(pwd)"
 
 IFS=''
 if [ "$env" == "preprod" ]; then
-   dbt_run_cmd='dbt run --profiles-dir /data-domain-pipelines --project-dir /data-domain-pipelines/my_transfer/ --target preprod-ca --models'
+   dbt_run_cmd="dbt run --profiles-dir ~/.dbt --project-dir . --target $env --models"
 elif [ "$env" == "prod" ]; then
-   dbt_run_cmd='dbt run --profiles-dir /data-domain-pipelines --project-dir /data-domain-pipelines/my_transfer/ --target prod-ca --models'
+   dbt_run_cmd="dbt run --profiles-dir ~/.dbt/ --project-dir . --target $env --models"
 else
-   dbt_run_cmd='dbt run --profiles-dir /data-domain-pipelines --project-dir /data-domain-pipelines/my_transfer/ --target dev-uk --models'
+   dbt_run_cmd="dbt run --profiles-dir ~/.dbt --project-dir . --target $env --models"
 fi
 
 cnt=1

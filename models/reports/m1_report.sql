@@ -5,7 +5,7 @@ select *except(name),
 upper(name) as name,
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from {{ source('coreruby', 'transaction_details') }}
-WHERE  date(_partitiontime) is not null
+WHERE  date(partitiontime) is not null
 and kind ='tax'
 and (UPPER(name) like '%GST%' or UPPER(name) like '%HST%' or UPPER(name) like '%PST%')
 ) t
@@ -18,7 +18,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'transactions') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -29,7 +29,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'appointments') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -40,7 +40,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'consultants') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -51,7 +51,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'consumer_networks') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -62,7 +62,7 @@ select
 row_number() over(partition by consultant_id,region_id  order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'consultants_regions') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -73,7 +73,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'specialisms') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -84,7 +84,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'specialism_categories') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -95,7 +95,7 @@ select
 row_number() over(partition by uuid order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'appointment_service_types') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),

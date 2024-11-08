@@ -10,6 +10,7 @@ sources:
     tables:
       - name: 'table_name'
         identifier: "{{ env_var('DBT_SRC_TABLE_NAME') }}"
+
   - name: raw
     description: 'Events from Coreruby Native or Microservice or External sources'
     database: "{{ env_var('DBT_SRC_GCP_PROJECT') }}"
@@ -17,6 +18,7 @@ sources:
     tables:
       - name: 'profile'
         identifier: "{{ env_var('DBT_SRC_TABLE_NAME') }}"
+
   - name: coreruby
     description: 'Events from Coreruby Native'
     database: "{{ env_var('DBT_SRC_GCP_PROJECT') }}"

@@ -1,100 +1,21 @@
-process:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_workflow
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: process
-  DBT_TGT_TABLE_NAME: workflow_process
-  MODELS: single
-variable:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_workflow
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: variable
-  DBT_TGT_TABLE_NAME: workflow_variable
-  MODELS: single
-user_operation:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_workflow
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: user_operation
-  DBT_TGT_TABLE_NAME: workflow_user_operation
-  MODELS: single
-task:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_workflow
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: task
-  DBT_TGT_TABLE_NAME: workflow_task
-  MODELS: single
-job:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_workflow
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: job
-  DBT_TGT_TABLE_NAME: workflow_job
-  MODELS: single
-form_property:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_workflow
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: form_property
-  DBT_TGT_TABLE_NAME: workflow_form_property
-  MODELS: single
-
-appointment:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_appointment
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: appointment
-  DBT_TGT_TABLE_NAME: appointment_appointment
-  MODELS: single
-availability_slots:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_appointment
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: availability_slots
-  DBT_TGT_TABLE_NAME: appointment_availability_slots
-  MODELS: single
-consultation:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_appointment
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: consultation
-  DBT_TGT_TABLE_NAME: appointment_consultation
-  MODELS: single
-consultation_notes:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_appointment
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: consultation_notes
-  DBT_TGT_TABLE_NAME: appointment_consultation_notes
-  MODELS: single
-patient:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_appointment
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: patient
-  DBT_TGT_TABLE_NAME: appointment_patient
-  MODELS: single
-stg_appointment_slots:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: my_domain_appointment
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: stg_appointment_slots
-  DBT_TGT_TABLE_NAME: appointment_stg_appointment_slots
-  MODELS: single
-
 mo_report:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: event
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: coreruby_transactions_native
-  DBT_TGT_TABLE_NAME: reconciliation_mo_report
+  DBT_SRC_GCP_PROJECT: "sb-stul-20241030-175302"
+  DBT_SRC_GCP_DATASET: "coreruby"
+  DBT_GCP_DATASET: "transfer_project_preprod"
+  DBT_SRC_TABLE_NAME: "transfer_project_preprod"
+  DBT_TGT_TABLE_NAME: "coreruby_transactions_native"
   MODELS: mo_report
 m1_report:
-  DBT_SRC_GCP_PROJECT: my-prod-project
-  DBT_SRC_GCP_DATASET: event
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: coreruby_transactions_native
-  DBT_TGT_TABLE_NAME: reconciliation_m1_report
+  DBT_SRC_GCP_PROJECT: "sb-stul-20241030-175302"
+  DBT_SRC_GCP_DATASET: "coreruby"
+  DBT_GCP_DATASET: "transfer_project_preprod"
+  DBT_SRC_TABLE_NAME: "transfer_project_preprod"
+  DBT_TGT_TABLE_NAME: "coreruby_transactions_native"
   MODELS: m1_report
+default:
+  DBT_SRC_GCP_PROJECT: "sb-stul-20241030-175302"
+  DBT_SRC_GCP_DATASET: "coreruby"
+  DBT_GCP_DATASET: "transfer_project_preprod"
+  DBT_SRC_TABLE_NAME: "coreruby_transactions_native"
+  DBT_TGT_TABLE_NAME: "coreruby_transactions_native_raw"
+  MODELS: default

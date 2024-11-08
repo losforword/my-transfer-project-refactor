@@ -5,7 +5,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'transactions') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -16,7 +16,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'appointments') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -27,7 +27,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'consumer_networks') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),
@@ -38,7 +38,7 @@ select
 row_number() over(partition by id order by metadata.kafka_metadata.offset desc) row_num
 from
 {{ source('coreruby', 'credit_cards') }}
-where date(_partitiontime) is not null
+where date(partitiontime) is not null
 ) t
 where row_num=1
 ),

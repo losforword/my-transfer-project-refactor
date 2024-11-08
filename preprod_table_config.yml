@@ -13,25 +13,3 @@ m1_report:
   DBT_TGT_TABLE_NAME: reconciliation_m1_report
   MODELS: m1_report
 
-consultation:
-  DBT_SRC_GCP_PROJECT: my-proprod-project
-  DBT_SRC_GCP_DATASET: my_domain_appointment
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: consultation
-  DBT_TGT_TABLE_NAME: appointment_consultation
-  MODELS: single
-consultation_notes:
-  DBT_SRC_GCP_PROJECT: my-proprod-project
-  DBT_SRC_GCP_DATASET: my_domain_appointment
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: consultation_notes
-  DBT_TGT_TABLE_NAME: appointment_consultation_notes
-  MODELS: single
-patient:
-  DBT_SRC_GCP_PROJECT: my-proprod-project
-  DBT_SRC_GCP_DATASET: my_domain_appointment
-  DBT_GCP_DATASET: my_operational
-  DBT_SRC_TABLE_NAME: patient
-  DBT_TGT_TABLE_NAME: appointment_patient
-  MODELS: single
-
