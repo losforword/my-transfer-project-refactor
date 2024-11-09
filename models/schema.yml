@@ -5,24 +5,16 @@ version: 2
 sources:
   - name: dataset_name
     description: 'Events from Coreruby Native or Microservice or External sources'
-    database: "{{ env_var('DBT_SRC_GCP_PROJECT') }}"
-    schema: "{{env_var('DBT_SRC_GCP_DATASET') }}"
+    database: "{{ var('prod_config')['default']['DBT_SRC_GCP_PROJECT'] if target.name == 'prod' else var('preprod_config')['default']['DBT_SRC_GCP_PROJECT'] }}"
+    schema: "{{ var('prod_config')['default']['DBT_SRC_GCP_DATASET'] if target.name == 'prod' else var('preprod_config')['default']['DBT_SRC_GCP_DATASET'] }}"
     tables:
       - name: 'table_name'
-        identifier: "{{ env_var('DBT_SRC_TABLE_NAME') }}"
-
-  - name: raw
-    description: 'Events from Coreruby Native or Microservice or External sources'
-    database: "{{ env_var('DBT_SRC_GCP_PROJECT') }}"
-    schema: "{{env_var('DBT_SRC_GCP_DATASET') }}"
-    tables:
-      - name: 'profile'
-        identifier: "{{ env_var('DBT_SRC_TABLE_NAME') }}"
+        identifier: "{{ var('prod_config')['default']['DBT_SRC_TABLE_NAME'] if target.name == 'prod' else var('preprod_config')['default']['DBT_SRC_TABLE_NAME'] }}"
 
   - name: coreruby
     description: 'Events from Coreruby Native'
-    database: "{{ env_var('DBT_SRC_GCP_PROJECT') }}"
-    schema: "{{env_var('DBT_SRC_GCP_DATASET') }}"
+    database: "{{ var('prod_config')['m_reports']['DBT_SRC_GCP_PROJECT'] if target.name == 'prod' else var('preprod_config')['m_reports']['DBT_SRC_GCP_PROJECT'] }}"
+    schema: "{{ var('prod_config')['m_reports']['DBT_SRC_GCP_DATASET'] if target.name == 'prod' else var('preprod_config')['m_reports']['DBT_SRC_GCP_DATASET'] }}"
     tables:
       - name: 'transactions'
         identifier: "coreruby_transactions_native"
