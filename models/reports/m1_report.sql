@@ -1,3 +1,7 @@
+{{ config(
+    enabled = target.name == 'prod'
+) }}
+
 with coreruby_transaction_details as (
 select t.* from
 (

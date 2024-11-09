@@ -24,3 +24,36 @@ models:
     dap:
         enabled: true
         materialized: table
+    my_transfer_project_refactor:
+        reports:
+            +enabled: "{{ target.name == 'preprod' }}"
+
+# Define environment-specific variables
+vars:
+    # preprod configuration
+    preprod_config:
+        m_reports:
+            DBT_SRC_GCP_PROJECT: "sb-stul-20241030-175302"
+            DBT_SRC_GCP_DATASET: "coreruby"
+            DBT_GCP_DATASET: "transfer_project_preprod"
+
+        default:
+            DBT_SRC_GCP_PROJECT: "sb-stul-20241030-175302"
+            DBT_SRC_GCP_DATASET: "coreruby"
+            DBT_GCP_DATASET: "transfer_project_preprod"
+            DBT_SRC_TABLE_NAME: "coreruby_transactions_native"
+            DBT_TGT_TABLE_NAME: "coreruby_transactions_native_raw"
+
+    # Production configuration
+    prod_config:
+        m_reports:
+            DBT_SRC_GCP_PROJECT: "sb-stul-20241030-175302"
+            DBT_SRC_GCP_DATASET: "coreruby"
+            DBT_GCP_DATASET: "transfer_project_preprod"
+
+        default:
+            DBT_SRC_GCP_PROJECT: "sb-stul-20241030-175302"
+            DBT_SRC_GCP_DATASET: "coreruby"
+            DBT_GCP_DATASET: "transfer_project_preprod"
+            DBT_SRC_TABLE_NAME: "coreruby_transactions_native"
+            DBT_TGT_TABLE_NAME: "coreruby_transactions_native_raw_prod"

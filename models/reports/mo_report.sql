@@ -1,3 +1,8 @@
+{{ config(
+    enabled = target.name == 'preprod'
+) }}
+
+
 with coreruby_transactions_unique as (
 select t.* from (
 select

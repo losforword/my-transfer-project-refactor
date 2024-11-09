@@ -1,7 +1,6 @@
-{{
-    config(
-        alias= env_var('DBT_TGT_TABLE_NAME')
-)}}
+{{ config(
+    alias = var("preprod_config")["default"]["DBT_TGT_TABLE_NAME"] if target.name == "preprod" else var("prod_config")["default"]["DBT_TGT_TABLE_NAME"]
+) }}
 
-Select *
-from  {{ source('dataset_name', 'table_name') }}
+SELECT *
+FROM {{ source('dataset_name', 'table_name') }}
